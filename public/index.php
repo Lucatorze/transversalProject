@@ -1,6 +1,8 @@
 <?php
 require_once("../vendor/autoload.php");
 
+session_start();
+
 $request_url = $_SERVER['REQUEST_URI'];
 
 $path = parse_url($request_url, PHP_URL_PATH);
@@ -31,7 +33,7 @@ if(isset($url_composants[2])){
 
 try{
 
-    list($controller, $action) = Project\Router::load($action_name,$controller_name);
+    list($controller, $action) = Project\Router::load($controller_name, $action_name);
 
 }catch(Project\Exception\ControllerNotFound $e){
     $controller = new Controller\ErrorController();
