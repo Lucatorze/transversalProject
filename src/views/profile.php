@@ -1,6 +1,15 @@
-<?php include "./inc/header.php";?>
+<?php include "./inc/header.php";
 
-<a href="../../">Home</a>
+if(!isset($_SESSION['userId'])){
+    ?>
+    Vous ne pouvez pas accéder à cette page en étant deconnecté.<br>
+    <a href="/">Home</a>
+    <?php
+}
+else {
+?>
+
+<a href="/">Home</a>
 
 <h1>Profile</h1>
 
@@ -11,7 +20,7 @@
         <li>Prénom : <?php echo $getProfile['firstname']; ?></li>
         <li>Nom : <?php echo $getProfile['lastname']; ?></li>
         <li>E-Mail : <?php echo $getProfile['email']; ?></li>
-        <li>Avatar : <?php echo $getProfile['avatar']; ?></li>
+        <li>Avatar : <img src="/upload/avatar/<?php echo $getProfile['avatar']; ?>.jpg" width="200"> </li>
         <li>Age : <?php echo $getProfile['age']; ?></li>
         <li>Telephone : <?php echo $getProfile['phonenumber']; ?></li>
         <li>Ville : <?php echo $getProfile['town']; ?></li>
@@ -20,6 +29,13 @@
     </ul>
 
 </div>
+
+    <form enctype="multipart/form-data" method="POST" action="/users/upload">
+        <label>Modifier l'avatar : </label>
+        <input type="hidden" name="user_id" value="<?php echo $getProfile['id'];?>"><br>
+        <input type="file" name="avatar" /><br><br>
+        <input type="submit" value="upload !">
+    </form><br>
 
 <form name="profileForm" class="profileForm" method="post">
 
@@ -54,4 +70,7 @@
 
 </form>
 
-<?php include "./inc/footer.php";?>
+    <?php
+}
+include "./inc/footer.php";
+?>

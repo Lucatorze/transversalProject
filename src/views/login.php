@@ -3,13 +3,13 @@ include "./inc/header.php";
 if(isset($_SESSION['userId'])){
     ?>
     Vous ne pouvez pas accéder à cette page en étant connecté.<br>
-    <a href="../../">Home</a>
+    <a href="/">Home</a>
     <?php
 }
 else {
     ?>
 
-    <a href="../../">Home</a>
+    <a href="/">Home</a>
 
     <h1>login</h1>
 
@@ -27,7 +27,7 @@ else {
     <br>
     <div>
         Pas inscrit ? rejoins notre communauté en t'inscrivant.<br>
-        Pour cela, <a href="../../users/register/">clique ici</a>
+        Pour cela, <a href="/users/register/">clique ici</a>
     </div>
 
     <?php

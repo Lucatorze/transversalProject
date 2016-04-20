@@ -1,6 +1,6 @@
 <?php include "./inc/header.php";?>
 
-<a href="../../">Home</a>
+<a href="/">Home</a>
 
 <h1>Profile</h1>
 
@@ -11,7 +11,7 @@
         <li>Prénom : <?php echo $getUserProfile['firstname']; ?></li>
         <li>Nom : <?php echo $getUserProfile['lastname']; ?></li>
         <li>E-Mail : <?php echo $getUserProfile['email']; ?></li>
-        <li>Avatar : <?php echo $getUserProfile['avatar']; ?></li>
+        <li>Avatar : <img src="/upload/avatar/<?php echo $getUserProfile['avatar']; ?>.jpg" width="200"></li>
         <li>Age : <?php echo $getUserProfile['age']; ?></li>
         <li>Telephone : <?php echo $getUserProfile['phonenumber']; ?></li>
         <li>Ville : <?php echo $getUserProfile['town']; ?></li>

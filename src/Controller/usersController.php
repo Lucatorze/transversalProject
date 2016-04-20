@@ -30,13 +30,42 @@ class usersController{
                 $error['password2'] = "Votre mot de passe n'est pas correcte.";
                 $formOk = false;
             }
+            if($login['rank'] == 0){
+
+                $error['ban'] = "Ce compte à été banni.";
+                $formOk = false;
+
+            }
             if(!$formOk) {
                 foreach ($error as $value) {
                     echo $value . "<br>";
                 }
             }else{
 
-                $_SESSION['userId'] = $login['id'];
+                if($login['rank'] == 4){
+
+                    $_SESSION['admin'] = $login['id'];
+                    $_SESSION['userId'] = $login['id'];
+
+                }
+                elseif($login['rank'] == 3){
+
+                    $_SESSION['modo'] = $login['id'];
+                    $_SESSION['userId'] = $login['id'];
+
+                }
+                elseif($login['rank'] == 2){
+
+                    $_SESSION['partner'] = $login['id'];
+                    $_SESSION['userId'] = $login['id'];
+
+                }
+                elseif($login['rank'] == 1){
+
+                    $_SESSION['member'] = $login['id'];
+                    $_SESSION['userId'] = $login['id'];
+
+                }
 
                 header('Location: /');
                 exit;
@@ -134,6 +163,12 @@ class usersController{
             list($id) = explode("/", $params);
             $getUserProfile = Users::getUserProfile($pdo,$id);
 
+            if(!$getUserProfile){
+
+                header('Location: /users/usersList/');
+
+            }
+
             include "./otherProfile.php";
         }
         else{
@@ -200,6 +235,17 @@ class usersController{
         $getUsersList = Users::getUsersList($pdo);
         include('./usersList.php');
 
+    }
+
+    public function uploadAction(){
+        $pdo = Connexion::getInstance();
+        $user_id = $_POST['user_id'];
+        $src = $_FILES['avatar']['tmp_name'];
+        $imgName = "avatar_".$user_id;
+        $destination = "../../public/upload/avatar/".$imgName.".jpg";
+        move_uploaded_file($src, $destination);
+        $updateAvatar = Users::updateAvatar($pdo,$imgName);
+        header("Location: /users/profile/");
     }
 
 }

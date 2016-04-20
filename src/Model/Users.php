@@ -56,6 +56,13 @@ class Users{
         $stmt->execute();
     }
 
+    public static function updateAvatar($pdo, $imgName){
+        $stmt = $pdo->prepare("UPDATE users SET avatar = :avatar WHERE id = :id");
+        $stmt->bindParam(':avatar',$imgName);
+        $stmt->bindParam(':id',$_SESSION['userId']);
+        $stmt->execute();
+    }
+
     public static function getUsers($pdo){
         $stmt = $pdo->prepare("SELECT * FROM users");
         $stmt->execute();
