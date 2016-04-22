@@ -4,3 +4,4 @@
 config/dbconfig.php
 *.phar
 composer.lock
+*.jpg

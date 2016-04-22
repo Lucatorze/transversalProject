@@ -3,6 +3,9 @@ require_once("../vendor/autoload.php");
 
 session_start();
 
+use Project\Connexion;
+use Model\Users;
+
 $request_url = $_SERVER['REQUEST_URI'];
 
 $path = parse_url($request_url, PHP_URL_PATH);
@@ -50,6 +53,20 @@ try{
     $action = "e500";
     $argument = $e;
 
+}
+
+if(!empty($_SESSION['userId'])){
+
+
+    $pdo = Connexion::getInstance();
+    $getUsers = Users::getUserProfile($pdo,$_SESSION['userId']);
+    if($_SESSION['userId'] != $getUsers['id']){
+        session_unset();
+        session_destroy();
+
+        header('Location: /');
+        exit;
+    }
 }
 
 chdir("../src/views/");
