@@ -12,7 +12,7 @@ class Offers{
         $stmt->bindParam(3, $_POST['view']);
         $stmt->bindParam(4, $_POST['content']);
         $stmt->bindParam(5, $_POST['date']);
-        $stmt->bindParam(6, $_POST['date']);
+        $stmt->bindParam(6, $_POST['nickname']);
         $stmt->execute();
 
     }

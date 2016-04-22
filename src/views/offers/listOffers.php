@@ -9,6 +9,7 @@
     <tr>
         <th>Auteur</th>
         <th>Nom du jeux</th>
+        <th>Date</th>
     </tr>
 
     <?php foreach($getOffersList as $result):?>
@@ -16,6 +17,7 @@
         <tr>
             <td><a href="/users/profile/<?php echo $result['userId']?>/"><?php echo $result['nickname']?></a></td>
             <td><?php echo $result['name']?></td>
+            <td><?php echo date('d/m/Y à H\hi', $result['date']); ?></td>
         </tr>
 
     <?php endforeach; ?>

@@ -50,6 +50,9 @@ class offersController{
 
                 $createOffers = Offers::createOffers($pdo);
 
+                header('Location: /Offers/list/');
+                exit;
+
             }
 
 
