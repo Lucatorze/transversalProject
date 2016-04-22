@@ -18,7 +18,13 @@
     <tr>
         <td><a href="/users/profile/<?php echo $result['id']?>/"><?php echo $result['nickname']?></a></td>
         <td><?php echo $result['email']?></td>
-        <td><?php echo $result['town']?></td>
+        <?php
+        if(!empty($result['town'])){
+        ?>
+        <td><?php echo $result['town']; ?></td>
+        <?php
+        }
+        ?>
     </tr>
 
 <?php endforeach; ?>

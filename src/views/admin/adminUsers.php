@@ -21,19 +21,19 @@ if(isset($_SESSION['admin']) || isset($_SESSION['modo'])){
         <?php foreach($getUsersList as $result):
 
             if($result['rank'] == 4){
-                $rank = "Administrateur";
+                $rank = "<span style='color:red'>Administrateur</span>";
             }
             elseif($result['rank'] == 3){
-                $rank = "Modérateur";
+                $rank = "<span style='color:orange'>Modérateur</span>";
             }
             elseif($result['rank'] == 2){
-                $rank = "Partenaire";
+                $rank = "<span style='color:#c000c0'>Partenaire</span>";
             }
             elseif($result['rank'] == 1){
-                $rank = "Membre";
+                $rank = "<span style='color:#00a1ff'>Membre</span>";
             }
             elseif($result['rank'] == 0){
-                $rank = "Banni";
+                $rank = "<span style='color:gray'>Banni</span>";
             }
 
             ?>

@@ -16,16 +16,55 @@ else {
 <div>
 
     <ul>
-        <li>Pseudo : <?php echo $getProfile['nickname']; ?></li>
-        <li>Prénom : <?php echo $getProfile['firstname']; ?></li>
-        <li>Nom : <?php echo $getProfile['lastname']; ?></li>
-        <li>E-Mail : <?php echo $getProfile['email']; ?></li>
+        <li>Pseudo : <b><?php echo $getProfile['nickname']; ?></b></li>
+        <li>Rang : <b><?php echo $rank ?></b></li>
+        <?php
+        if(!empty($getProfile['firstname'])){
+        ?>
+            <li>Prénom : <b><?php echo $getProfile['firstname']; ?></b></li>
+            <?php
+        }
+        if(!empty($getProfile['lastname'])){
+        ?>
+        <li>Nom : <b><?php echo $getProfile['lastname']; ?></b></li>
+            <?php
+        }
+        if(!empty($getProfile['email'])){
+        ?>
+        <li>E-Mail : <b><?php echo $getProfile['email']; ?></b></li>
+            <?php
+        }
+        if(!empty($getProfile['avatar'])){
+        ?>
         <li>Avatar : <img src="/upload/avatar/<?php echo $getProfile['avatar']; ?>.jpg" width="200"> </li>
-        <li>Age : <?php echo $getProfile['age']; ?></li>
-        <li>Telephone : <?php echo $getProfile['phonenumber']; ?></li>
-        <li>Ville : <?php echo $getProfile['town']; ?></li>
-        <li>Code Postal : <?php echo $getProfile['postalcode']; ?></li>
-        <li>Adresse : <?php echo $getProfile['adress']; ?></li>
+            <?php
+        }
+        if(!empty($getProfile['age'])){
+        ?>
+        <li>Age : <b><?php echo $getProfile['age']; ?></b></li>
+            <?php
+        }
+        if(!empty($phonenumber)){
+        ?>
+        <li>Telephone : <b><?php echo $phonenumber; ?></b></li>
+            <?php
+        }
+        if(!empty($getProfile['town'])){
+        ?>
+        <li>Ville : <b><?php echo $getProfile['town']; ?></b></li>
+            <?php
+        }
+        if(!empty($getProfile['postalcode'])){
+        ?>
+        <li>Code Postal : <b><?php echo $getProfile['postalcode']; ?></b></li>
+            <?php
+        }
+        if(!empty($getProfile['adress'])){
+        ?>
+        <li>Adresse : <b><?php echo $getProfile['adress']; ?></b></li>
+            <?php
+        }
+        ?>
     </ul>
 
 </div>

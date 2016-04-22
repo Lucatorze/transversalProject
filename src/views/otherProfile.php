@@ -7,16 +7,57 @@
 <div>
 
     <ul>
-        <li>Pseudo : <?php echo $getUserProfile['nickname']; ?></li>
-        <li>Prénom : <?php echo $getUserProfile['firstname']; ?></li>
-        <li>Nom : <?php echo $getUserProfile['lastname']; ?></li>
-        <li>E-Mail : <?php echo $getUserProfile['email']; ?></li>
-        <li>Avatar : <img src="/upload/avatar/<?php echo $getUserProfile['avatar']; ?>.jpg" width="200"></li>
-        <li>Age : <?php echo $getUserProfile['age']; ?></li>
-        <li>Telephone : <?php echo $getUserProfile['phonenumber']; ?></li>
-        <li>Ville : <?php echo $getUserProfile['town']; ?></li>
-        <li>Code Postal : <?php echo $getUserProfile['postalcode']; ?></li>
-        <li>Adresse : <?php echo $getUserProfile['adress']; ?></li>
+        <ul>
+            <li>Pseudo : <b><?php echo $getUserProfile['nickname']; ?></b></li>
+            <li>Rang : <b><?php echo $rank ?></b></li>
+            <?php
+            if(!empty($getUserProfile['firstname'])){
+                ?>
+                <li>Prénom : <b><?php echo $getUserProfile['firstname']; ?></b></li>
+                <?php
+            }
+            if(!empty($getUserProfile['lastname'])){
+                ?>
+                <li>Nom : <b><?php echo $getUserProfile['lastname']; ?></b></li>
+                <?php
+            }
+            if(!empty($getUserProfile['email'])){
+                ?>
+                <li>E-Mail : <b><?php echo $getUserProfile['email']; ?></b></li>
+                <?php
+            }
+            if(!empty($getUserProfile['avatar'])){
+                ?>
+                <li>Avatar : <img src="/upload/avatar/<?php echo $getUserProfile['avatar']; ?>.jpg" width="200"> </li>
+                <?php
+            }
+            if(!empty($getUserProfile['age'])){
+                ?>
+                <li>Age : <b><?php echo $getUserProfile['age']; ?></b></li>
+                <?php
+            }
+            if(!empty($phonenumber)){
+                ?>
+                <li>Telephone : <b><?php echo $phonenumber; ?></b></li>
+                <?php
+            }
+            if(!empty($getUserProfile['town'])){
+                ?>
+                <li>Ville : <b><?php echo $getUserProfile['town']; ?></b></li>
+                <?php
+            }
+            if(!empty($getUserProfile['postalcode'])){
+                ?>
+                <li>Code Postal : <b><?php echo $getUserProfile['postalcode']; ?></b></li>
+                <?php
+            }
+            if(!empty($getUserProfile['adress'])){
+                ?>
+                <li>Adresse : <b><?php echo $getUserProfile['adress']; ?></b></li>
+                <?php
+            }
+            ?>
+        </ul>
     </ul>
 
 </div>

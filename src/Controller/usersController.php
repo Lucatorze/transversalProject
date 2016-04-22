@@ -163,6 +163,25 @@ class usersController{
             list($id) = explode("/", $params);
             $getUserProfile = Users::getUserProfile($pdo,$id);
 
+            $phonenumber = preg_replace("#^([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})$#", "$1 $2 $3 $4 $5", $getUserProfile['phonenumber']);
+
+
+            if($getUserProfile['rank'] == 4){
+                $rank = "<span style='color:red'>Administrateur</span>";
+            }
+            elseif($getUserProfile['rank'] == 3){
+                $rank = "<span style='color:orange'>Modérateur</span>";
+            }
+            elseif($getUserProfile['rank'] == 2){
+                $rank = "<span style='color:#c000c0'>Partenaire</span>";
+            }
+            elseif($getUserProfile['rank'] == 1){
+                $rank = "<span style='color:#00a1ff'>Membre</span>";
+            }
+            elseif($getUserProfile['rank'] == 0){
+                $rank = "<span style='color:gray'>Banni</span>";
+            }
+
             if(!$getUserProfile){
 
                 header('Location: /users/usersList/');
@@ -174,12 +193,29 @@ class usersController{
         else{
 
             $getProfile = Users::getProfile($pdo);
+            $phonenumber = preg_replace("#^([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})$#", "$1 $2 $3 $4 $5", $getProfile['phonenumber']);
+
+            if($getProfile['rank'] == 4){
+                $rank = "<span style='color:red'>Administrateur</span>";
+            }
+            elseif($getProfile['rank'] == 3){
+                $rank = "<span style='color:orange'>Modérateur</span>";
+            }
+            elseif($getProfile['rank'] == 2){
+                $rank = "<span style='color:#c000c0'>Partenaire</span>";
+            }
+            elseif($getProfile['rank'] == 1){
+                $rank = "<span style='color:#00a1ff'>Membre</span>";
+            }
+            elseif($getProfile['rank'] == 0){
+                $rank = "<span style='color:gray'>Banni</span>";
+            }
 
             include "./profile.php";
 
-            if(isset($_POST['password'])){
+            if(isset($_POST['submit'])){
 
-                if(!$_POST['password'] || strlen($_POST['password']) < 6 AND $_POST['password'] != $_POST['passwordVerif']){
+               if(!$_POST['password'] || strlen($_POST['password']) < 6 AND $_POST['password'] != $_POST['passwordVerif']){
                     $error['password'] =  "votre mot de pass doit faire un minimum de 6 caractères et doit être identique a la vérification.";
                     $formOk = false;
                 }
