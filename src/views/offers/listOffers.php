@@ -16,7 +16,7 @@
 
         <tr>
             <td><a href="/users/profile/<?php echo $result['userId']?>/"><?php echo $result['nickname']?></a></td>
-            <td><?php echo $result['name']?></td>
+            <td><a href="/offers/viewOffers/<?php echo $result['id']; ?>"><?php echo $result['name']?></a></td>
             <td><?php echo date('d/m/Y à H\hi', $result['date']); ?></td>
         </tr>
 

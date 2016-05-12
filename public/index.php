@@ -60,7 +60,7 @@ if(!empty($_SESSION['userId'])){
 
     $pdo = Connexion::getInstance();
     $getUsers = Users::getUserProfile($pdo,$_SESSION['userId']);
-    if($_SESSION['userId'] != $getUsers['id']){
+    if($_SESSION['userId'] != $getUsers['id'] || $getUsers['rank'] == 0){
         session_unset();
         session_destroy();
 

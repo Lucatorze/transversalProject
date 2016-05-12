@@ -269,6 +269,7 @@ class usersController{
 
         $pdo = Connexion::getInstance();
         $getUsersList = Users::getUsersList($pdo);
+        
         include('./usersList.php');
 
     }
