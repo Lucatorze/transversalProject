@@ -48,6 +48,7 @@ class offersController{
                 $_POST['name'] = htmlentities($_POST['name']);
                 $_POST['content'] = htmlentities($_POST['content']);
                 $_POST['date'] = $date;
+                $_POST['offerType'] = 1;
 
                 $createOffers = Offers::createOffers($pdo);
 
@@ -66,6 +67,16 @@ class offersController{
 
             if(!$_POST['name']){
                 $error['name'] = 'Merci de renseigner le titre du jeu';
+                $formOk = false;
+            }
+
+            if(!$_POST['price']){
+                $error['price'] = 'Merci de renseigner le prix du jeu';
+                $formOk = false;
+            }
+
+            if(!is_numeric($_POST['price'])){
+                $error['price'] = 'Merci de donnée une valeur numérique pour le prix du jeu';
                 $formOk = false;
             }
 
@@ -94,6 +105,7 @@ class offersController{
                 $_POST['name'] = htmlentities($_POST['name']);
                 $_POST['content'] = htmlentities($_POST['content']);
                 $_POST['date'] = $date;
+                $_POST['offerType'] = 2;
 
                 $createOffers = Offers::createOffers($pdo);
 
@@ -113,7 +125,8 @@ class offersController{
     public function listAction(){
 
         $pdo = Connexion::getInstance();
-        $getOffersList = Offers::listOffers($pdo);
+        $getOffersListExchange = Offers::listOffersExchange($pdo,1);
+        $getOffersListRental = Offers::listOffersRental($pdo,2);
         include "./offers/listOffers.php";
 
     }
@@ -123,6 +136,14 @@ class offersController{
         $pdo = Connexion::getInstance();
         list($id) = explode("/", $params);
         $getOffers = Offers::viewOffers($pdo,$id);
+
+        if ($getOffers['offerType'] = 1){
+            $offerType = 'Offre D\'échange';
+        }
+        elseif ($getOffers['offerType'] = 2){
+            $offerType = 'Offre D\'échange';
+        }
+        
         include "./offers/viewOffers.php";
 
     }

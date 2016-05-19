@@ -85,7 +85,13 @@ class Users{
             return $getUsersList;
     }
 
+    public static function getNbOffer($pdo, $id){
+        $stmt = $pdo->prepare("SELECT COUNT(id) as countid FROM offers WHERE userId = 1");
+        $stmt->execute();
+        $result = $stmt->fetch();
 
+        return $result;
+    }
 
 
 }

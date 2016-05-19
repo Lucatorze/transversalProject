@@ -57,6 +57,8 @@
                 <?php
             }
             ?>
+            <li>Nombre d'offre proposé : <b><?php echo $getNbOffer['countid'] ?></b></li>
+            <li><a href="/privateMsg/create/<?php echo $getUserProfile['id'];?>">Envoyer un message privé</a> </li>
         </ul>
     </ul>
 

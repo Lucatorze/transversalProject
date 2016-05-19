@@ -5,6 +5,7 @@ session_start();
 
 use Project\Connexion;
 use Model\Users;
+use Model\Msg;
 
 $request_url = $_SERVER['REQUEST_URI'];
 
@@ -54,11 +55,10 @@ try{
     $argument = $e;
 
 }
+$pdo = Connexion::getInstance();
 
 if(!empty($_SESSION['userId'])){
 
-
-    $pdo = Connexion::getInstance();
     $getUsers = Users::getUserProfile($pdo,$_SESSION['userId']);
     if($_SESSION['userId'] != $getUsers['id'] || $getUsers['rank'] == 0){
         session_unset();

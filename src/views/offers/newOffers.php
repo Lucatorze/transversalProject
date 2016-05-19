@@ -58,8 +58,8 @@
         <input type="text" name="name" id="name"><br>
         <br>
 
-        <label for="name">Prix demandé : </label><br>
-        <input type="text" name="name" id="name"><br>
+        <label for="price">Prix demandé : </label><br>
+        <input type="number" name="price" id="price">€<br>
         <br>
 
         <label for="type">Type du jeu :</label><br>

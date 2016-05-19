@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use Model\Offers;
 use Project\Connexion;
 use Model\Users;
 
@@ -162,6 +163,7 @@ class usersController{
 
             list($id) = explode("/", $params);
             $getUserProfile = Users::getUserProfile($pdo,$id);
+            $getNbOffer = Users::getNbOffer($pdo, $id);
 
             $phonenumber = preg_replace("#^([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})$#", "$1 $2 $3 $4 $5", $getUserProfile['phonenumber']);
 
@@ -185,7 +187,7 @@ class usersController{
             if(!$getUserProfile){
 
                 header('Location: /users/usersList/');
-
+                exit;
             }
 
             include "./otherProfile.php";
@@ -193,6 +195,7 @@ class usersController{
         else{
 
             $getProfile = Users::getProfile($pdo);
+            $getNbOffer = Users::getNbOffer($pdo, $getProfile);
             $phonenumber = preg_replace("#^([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})([0-9]{1}[0-9]{1})$#", "$1 $2 $3 $4 $5", $getProfile['phonenumber']);
 
             if($getProfile['rank'] == 4){
@@ -283,6 +286,7 @@ class usersController{
         move_uploaded_file($src, $destination);
         $updateAvatar = Users::updateAvatar($pdo,$imgName);
         header("Location: /users/profile/");
+        exit;
     }
 
 }

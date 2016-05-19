@@ -7,6 +7,14 @@
 <img src="/upload/offers/<?php echo $getOffers['view']; ?>.jpg" width="200"><br>
 
 <ul>
+    <li>type d'offre : <?php echo $offerType; ?></li>
+    <?php
+    if (!empty($getOffers['price'])){
+        ?>
+        <li>Prix : <?php echo $offerType['price']; ?>€</li>
+        <?php
+    }
+    ?>
     <li>type : <?php echo $getOffers['type']; ?></li>
     <li>date de sortie : <?php echo $getOffers['releaseDate']; ?></li>
     <li>Se joue à : <?php echo $getOffers['players']; ?></li>

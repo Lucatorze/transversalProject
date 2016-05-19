@@ -54,7 +54,7 @@ else {
         <li>Ville : <b><?php echo $getProfile['town']; ?></b></li>
             <?php
         }
-        if(!empty($getProfile['postalcode'])){
+            if(!empty($getProfile['postalcode'])){
         ?>
         <li>Code Postal : <b><?php echo $getProfile['postalcode']; ?></b></li>
             <?php
@@ -65,6 +65,7 @@ else {
             <?php
         }
         ?>
+        <li>Nombre d'offre proposé : <b><?php echo $getNbOffer['countid'] ?></b></li>
     </ul>
 
 </div>
