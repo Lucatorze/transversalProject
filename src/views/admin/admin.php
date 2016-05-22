@@ -10,9 +10,9 @@ if(isset($_SESSION['admin']) || isset($_SESSION['modo'])){
     <ul>
 
         <li><a href="/admin/users/">Edition des membres</a></li>
-        <li><a href="">Gestion des evenements</a></li>
+        <li><a href="/event/list/">Gestion des evenements</a></li>
         <li><a href="">Gestion des echanges</a></li>
-        <li><a href="">Gestion du catalogue</a></li>
+        <li><a href="/catalog/list/">Gestion du catalogue</a></li>
         <li><a href="">Gestion des testes</a></li>
         <li><a href="">Gestion du forum</a></li>
 

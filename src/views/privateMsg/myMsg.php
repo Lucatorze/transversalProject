@@ -30,6 +30,7 @@ else {
             <th>Auteur</th>
             <th>Titre</th>
             <th>Date de reception</th>
+            <th>Action</th>
         </tr>
 
         <?php foreach($getPrivateMsg as $result):?>
@@ -37,8 +38,9 @@ else {
 
             <tr>
                 <td><a href="/users/profile/<?php echo $result['authorId']?>/"><?php echo $getUserProfile['nickname']?></a></td>
-                <td><a href="/privateMsg/viewMsg/<?php echo $result['authorId']?>/"><?php echo $result['title']; ?></a></td>
+                <td><a href="/privateMsg/viewMsg/<?php echo $result['id']?>/"><?php echo $result['title']; ?></a></td>
                 <td><?php echo date('d/m/Y à H\hi', $result['date']); ?></td>
+                <td><a href="/privateMsg/delete/<?php echo $result['id']?>/">Supprimer</a></td>
 
             </tr>
 

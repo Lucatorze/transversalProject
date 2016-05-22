@@ -60,4 +60,9 @@ class Msg{
         return $result;
     }
 
+    public static function deleteMsg($pdo, $id){
+        $stmt = $pdo->prepare("DELETE FROM privatemsg WHERE id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+    }
 }

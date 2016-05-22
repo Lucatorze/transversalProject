@@ -102,4 +102,14 @@ class privateMsgController{
         include "./privateMsg/viewMsg.php";
     }
 
+    public function deleteAction($params){
+        $pdo = Connexion::getInstance();
+        list($id) = explode("/", $params);
+
+        $deleteUsers = Msg::deleteMsg($pdo, $id);
+
+        header("Location: /privateMsg/myMsg/");
+        exit;
+    }
+
 }
