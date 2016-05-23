@@ -9,6 +9,7 @@ class privateMsgController{
 
     public function myMsgAction(){
         $pdo = Connexion::getInstance();
+        $getMP = Msg::getNbMsg($pdo);
         $getPrivateMsg = Msg::getPrivateMsg($pdo);
 
         foreach ($getPrivateMsg as $nickname){
@@ -21,6 +22,7 @@ class privateMsgController{
     public function createAction($params){
 
         $pdo = Connexion::getInstance();
+        $getMP = Msg::getNbMsg($pdo);
         list($id) = explode("/", $params);
 
         $getNickname = Users::getUsersList($pdo);
@@ -94,6 +96,7 @@ class privateMsgController{
     public function viewMsgAction($params){
 
         $pdo = Connexion::getInstance();
+        $getMP = Msg::getNbMsg($pdo);
         list($id) = explode("/", $params);
         
         $getMsg = Msg::getMsg($pdo, $id);
@@ -104,6 +107,7 @@ class privateMsgController{
 
     public function deleteAction($params){
         $pdo = Connexion::getInstance();
+        $getMP = Msg::getNbMsg($pdo);
         list($id) = explode("/", $params);
 
         $deleteUsers = Msg::deleteMsg($pdo, $id);

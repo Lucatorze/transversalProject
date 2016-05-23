@@ -3,8 +3,8 @@
 <html lang="fr">
 <head>
 
-    <meta charset="UTF-8">
-    <title>TransversalProject</title>
+
+    <title>Game Blenders - home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -28,7 +28,7 @@
                     <li><a href="/offers/list/">Échanger</a></li>
                     <li><a href="/catalog/listCat/">Le catalogue</a></li>
                     <li><a href="/event/list/">Nos évenements</a></li>
-                    <li><a href="#">Test</a></li>
+                    <li><a href="/test/list/">Test</a></li>
                     <li><a href="#">Forum</a></li>
                     <?php if(isset($_SESSION['admin']) || isset($_SESSION['modo'])){ ?><li><a href="/admin/home/">Administration</a><br></li><?php } ?>
                 </ul>
@@ -41,7 +41,7 @@
             <ul class="user">
                 <?php if(isset($_SESSION['userId'])){ ?>
 
-                    <li><a href="/users/privatemsg/">MESSAGE PRIVE (<?php echo $getMP['countid']; ?>)</a> </li>
+                    <li><a href="/privateMsg/myMsg/">MESSAGE PRIVE (<?php echo $getMP['countid']; ?>)</a> </li>
                     <li><a href="/users/profile/">PROFILE</a> </li>
                     <li><a href="/users/usersList/">LISTE DES MEMBRES</a> </li>
                     <li><a href="/users/logout/">SE DECONNECTER</a> </li>
@@ -65,10 +65,10 @@
         <div class="header-submenu">
             <ul>
                 <li><a href="/"><span>ACCUEIL</span></a></li>
-                <li><a href="/offers/list/">ÉCHANGER</a></li>
+                <li><a href="/offers/intro/">&Eacute;CHANGER</a></li>
                 <li><a href="/catalog/listCat/">LE CATALOGUE</a></li>
-                <li><a href="/event/list/">NOS ÉVÉNEMENTS</a></li>
-                <li><a href="#">TEST</a></li>
+                <li><a href="/event/list/">NOS &Eacute;V&Eacute;NEMENTS</a></li>
+                <li><a href="/test/list/">TEST</a></li>
                 <li><a href="#">FORUM</a></li>
                 <?php if(isset($_SESSION['admin']) || isset($_SESSION['modo'])){ ?><li><a href="/admin/home/">ADMINISTRATION</a><br></li><?php } ?>
             </ul>
@@ -84,45 +84,45 @@
                     <img class="title-element-desk" src="assets/img/figure_right_top.png" alt="figure_left">
                     <img class="title-element-mobil" src="assets/img/losange-top.png" alt="figure_left">
                 </div>
-                <p class="apropo-intro">Game Blenders est la première ludothèque numérique française.<br>
-                    Grace a notre site vous ferez partis d‘une communauté passionée par les jeux de sociétés.</p>
+                <p class="apropo-intro">Game Blenders est la premi&egrave;re ludoth&egrave;que num&eacute;rique fran&ccedil;aise.<br>
+                    Grace a notre site vous ferez partis d&#145;une communaut&eacute; passion&eacute;e par les jeux de soci&eacute;t&eacute;s.</p>
                 <br><br>
-                <p class="apropo-text">Game Blenders vous propose de louer ou d‘échanger des jeux de sociétés de<br>
-                    diverses catégories et pour tous les âges.</p>
+                <p class="apropo-text">Game Blenders vous propose de louer ou d&#145;&eacute;changer des jeux de soci&eacute;t&eacute;s de<br>
+                    diverses cat&eacute;gories et pour tous les &acirc;ges.</p>
                 <br><br>
-                <p class="apropo-text">Notre comunauté vous propose de rencontrer des passionés et
-                    de participer à des événements spécialisés organisé pas nos soins ! </p>
+                <p class="apropo-text">Notre comunaut&eacute; vous propose de rencontrer des passion&eacute;s et
+                    de participer &agrave; des &eacute;v&eacute;nements sp&eacute;cialis&eacute;s organis&eacute; pas nos soins ! </p>
                 <br><br>
-                <a class="apropo-btn" href="#"><button class="btn">LOUER OU ÉCHANGER</button></a>
+                <a class="apropo-btn" href="/offers/list/"><button class="btn">LOUER OU &Eacute;CHANGER</button></a>
             </div>
         </div>
     </header>
-
-    <h1>home</h1>
-
-
 
     <section>
         <div class="article-top">
             <div class="title">
                 <img class="title-element-mobil" src="assets/img/losange.png" alt="figure_left">
                 <img class="title-element-desk" src="assets/img/figure_left.png" alt="figure_left">
-                <h1 class="title-element">LES NOUVEAUTÉS</h1>
+                <h1 class="title-element">LES NOUVEAUT&Eacute;S</h1>
                 <img class="title-element-desk" src="assets/img/figure_right.png" alt="figure_left">
                 <img class="title-element-mobil" src="assets/img/losange.png" alt="figure_left">
             </div>
-            <h2>Découvrez les derniers jeux que vous pouvez louer ou échanger !</h2>
+            <h2>D&eacute;couvrez les derniers jeux que vous pouvez louer ou &eacute;changer !</h2>
 
-            <?php foreach($getLastCatalog as $result):?>
+            <?php foreach($getLastCatalog as $result):
+
+                $description = substr($result['description'], 0, 120);
+
+                ?>
                 <div class="article">
                     <div class="background-img">
-                        <img src="/assets/img/amun.png" alt="Amun">
+                        <img src="/upload/catalog/<?php echo $result['view'] ?>.jpg" alt="Amun">
                     </div>
                     <div class="background-info">
                         <h3><?php echo $result['name']?></h3>
-                        <p><?php echo $result['description']?></p>
+                        <p><?php echo $description;?> ... </p>
                     </div>
-                    <a href="#"><button class="btn">LOUER OU ÉCHANGER</button></a>
+                    <a href="/catalog/viewItem/<?php echo $result['id'] ?>"><button class="btn">LOUER OU &Eacute;CHANGER</button></a>
                 </div>
 
             <?php endforeach; ?>
@@ -132,7 +132,7 @@
             <div class="title">
                 <img class="title-element-mobil" src="assets/img/losange.png" alt="figure_left">
                 <img class="title-element-desk" src="assets/img/figure_left.png" alt="figure_left">
-                <h1 class="title-element">LA LUDOTHÈQUE</h1>
+                <h1 class="title-element">LA LUDOTH&Egrave;QUE</h1>
                 <img class="title-element-desk" src="assets/img/figure_right.png" alt="figure_right">
                 <img class="title-element-mobil" src="assets/img/losange.png" alt="figure_left">
             </div>
@@ -149,7 +149,7 @@
                 </div>
                 <div class="stat-element">
                     <img class="stat-img" src="assets/img/check.png" alt="Check">
-                    <p class="stat-title">Jeux échanger et louer :</p>
+                    <p class="stat-title">Jeux &eacute;changer et louer :</p>
                     <p class="stat-number"><?php echo $countOffers['countid']; ?></p>
                 </div>
             </div>
@@ -163,8 +163,8 @@
                 <a href="#"><li>Contactez-nous</li></a>
                 <a href="/"><li>Accueil</li></a>
                 <a href="#"><li>Desscription</li></a>
-                <a href="#"><li>Réseaux sociaux</li></a>
-                <a href="#"><li>À Propos</li></a>
+                <a href="#"><li>R&eacute;seaux sociaux</li></a>
+                <a href="#"><li>&Agrave; Propos</li></a>
                 <a href="#"><li>FAQ</li></a>
                 <a href="#"><li>Qui sommes nous ?</li></a>
             </ul>

@@ -6,14 +6,16 @@ class Catalog{
 
     public static function add($pdo){
 
-        $stmt = $pdo->prepare('INSERT INTO catalog_items(id_cat, name, releaseDate, dateAdd, players, gameRules, view) VALUE (?,?,?,?,?,?,?)');
+        $stmt = $pdo->prepare('INSERT INTO catalog_items(id_cat, name, description, releaseDate, dateAdd, players, age, time, view) VALUE (?,?,?,?,?,?,?,?,?)');
         $stmt->bindParam(1, $_POST['id_cat']);
         $stmt->bindParam(2, $_POST['name']);
-        $stmt->bindParam(3, $_POST['releaseDate']);
-        $stmt->bindParam(4, $_POST['date']);
-        $stmt->bindParam(5, $_POST['players']);
-        $stmt->bindParam(6, $_POST['gameRules']);
-        $stmt->bindParam(7, $_POST['view']);
+        $stmt->bindParam(3, $_POST['description']);
+        $stmt->bindParam(4, $_POST['releaseDate']);
+        $stmt->bindParam(5, $_POST['date']);
+        $stmt->bindParam(6, $_POST['players']);
+        $stmt->bindParam(7, $_POST['age']);
+        $stmt->bindParam(8, $_POST['time']);
+        $stmt->bindParam(9, $_POST['view']);
         $stmt->execute();
 
     }
@@ -56,6 +58,15 @@ class Catalog{
         return $result;
     }
 
+    public static function getCategoriesName($pdo, $id){
+        $stmt = $pdo->prepare("SELECT * FROM catalog_categories WHERE id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        return $result;
+    }
+
     public static function getItemList($pdo,$id){
 
         $stmt = $pdo->prepare("SELECT * FROM catalog_items WHERE id_cat = :id_cat ORDER BY id DESC");
@@ -80,9 +91,10 @@ class Catalog{
         return $result;
     }
 
-    public static function deleteMsg($pdo, $id){
-        $stmt = $pdo->prepare("DELETE FROM privatemsg WHERE id = :id");
+    public static function deleteItem($pdo,$id){
+        $stmt = $pdo->prepare("DELETE FROM catalog_items WHERE id = :id");
         $stmt->bindParam(":id", $id);
         $stmt->execute();
+
     }
 }

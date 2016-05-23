@@ -1,0 +1,13 @@
+{
+  "name": "transversalProject",
+  "require": {
+    "php"                   : ">=5.5"
+  },
+  "autoload": {
+      "psr-0": { 
+        "Project": "src",
+        "Controller": "src", 
+        "Model": "src"
+      }
+  }
+}

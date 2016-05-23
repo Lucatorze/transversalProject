@@ -1,0 +1,7 @@
+<?php
+$config = [
+  "host" => "mysql:host=host;dbname=dbname",
+  "user" => "login",
+  "password" => "password",
+];
+return $config;
