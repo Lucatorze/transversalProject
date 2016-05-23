@@ -1,7 +1,0 @@
-# Created by .ignore support plugin (hsz.mobi)
-*vendor/
-*.idea/
-config/dbconfig.php
-*.phar
-composer.lock
-*.jpg
