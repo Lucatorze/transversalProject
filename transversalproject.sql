@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 30 Mai 2016 à 18:51
+-- Généré le :  Lun 30 Mai 2016 à 18:53
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `date`, `nickname`, `firstname`, `lastname`, `password`, `email`, `rank`, `avatar`, `age`, `phonenumber`, `town`, `postalcode`, `adress`) VALUES
-(3, 1463953143, 'admin', 'Lucas', 'Roberts', '56e02cb794bf3b784974071f38725c52a12b2d29', 'admin@admin.fr', 4, 'avatar_3', 18, '0673688795', 'Chauconin-Neufmontier', 77124, '8 rue Saint Barthélémy');
+(3, 1463953143, 'admin', 'Lucas', 'Roberts', '3b004ac6d8a602681f5ee3587c924855679e21d9', 'admin@admin.fr', 4, 'avatar_3', 18, '0673688795', 'Chauconin-Neufmontiers', 77124, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
