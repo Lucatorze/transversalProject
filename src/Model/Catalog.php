@@ -6,16 +6,19 @@ class Catalog{
 
     public static function add($pdo){
 
-        $stmt = $pdo->prepare('INSERT INTO catalog_items(id_cat, name, description, releaseDate, dateAdd, players, age, time, view) VALUE (?,?,?,?,?,?,?,?,?)');
+        $stmt = $pdo->prepare('INSERT INTO catalog_items(id_cat, userId, itemType, nickname, name, description, releaseDate, dateAdd, players, age, time, view) VALUE (?,?,?,?,?,?,?,?,?,?,?,?)');
         $stmt->bindParam(1, $_POST['id_cat']);
-        $stmt->bindParam(2, $_POST['name']);
-        $stmt->bindParam(3, $_POST['description']);
-        $stmt->bindParam(4, $_POST['releaseDate']);
-        $stmt->bindParam(5, $_POST['date']);
-        $stmt->bindParam(6, $_POST['players']);
-        $stmt->bindParam(7, $_POST['age']);
-        $stmt->bindParam(8, $_POST['time']);
-        $stmt->bindParam(9, $_POST['view']);
+        $stmt->bindParam(2, $_POST['userId']);
+        $stmt->bindParam(3, $_POST['itemType']);
+        $stmt->bindParam(4, $_POST['nickname']);
+        $stmt->bindParam(5, $_POST['name']);
+        $stmt->bindParam(6, $_POST['description']);
+        $stmt->bindParam(7, $_POST['releaseDate']);
+        $stmt->bindParam(8, $_POST['date']);
+        $stmt->bindParam(9, $_POST['players']);
+        $stmt->bindParam(10, $_POST['age']);
+        $stmt->bindParam(11, $_POST['time']);
+        $stmt->bindParam(12, $_POST['view']);
         $stmt->execute();
 
     }
@@ -95,6 +98,20 @@ class Catalog{
         $stmt = $pdo->prepare("DELETE FROM catalog_items WHERE id = :id");
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-
     }
+
+    public static function getRand($pdo){
+        $stmt = $pdo->prepare("SELECT * FROM catalog_items ORDER BY rand() LIMIT 2");
+        $stmt->execute();
+
+        $getRand = [];
+
+        while ($result = $stmt->fetch()) {
+            $getRand[] = $result;
+        }
+
+        return $getRand;
+    }
+
+
 }

@@ -12,8 +12,8 @@ class Home{
         return $result;
     }
 
-    public static function countOffers($pdo){
-        $stmt = $pdo->prepare("SELECT COUNT(id) as countid FROM offers");
+    public static function countItem($pdo){
+        $stmt = $pdo->prepare("SELECT COUNT(id) as countid FROM catalog_items");
         $stmt->execute();
         $result = $stmt->fetch();
 

@@ -12,7 +12,7 @@ class IndexController{
     $pdo = Connexion::getInstance();
     $getMP = Msg::getNbMsg($pdo);
     $countUsers = Home::countUsers($pdo);
-    $countOffers = Home::countOffers($pdo);
+    $countItem = Home::countItem($pdo);
     $getLastCatalog = Home::getLastCatalog($pdo);
     include "./home.php";
   }

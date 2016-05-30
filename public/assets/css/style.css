@@ -187,7 +187,8 @@ section {
   background-color: #ece9de; }
 
 .article img {
-  margin-top: 20px; }
+  margin-top: 20px;
+  width: 165px; }
 
 .background-info {
   padding-top: 20px;
