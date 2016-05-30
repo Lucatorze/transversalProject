@@ -1,6 +1,6 @@
 # transversalProject
 
-Pour installer le GameBlenders :
+Pour installer GameBlenders :
 
 1. Faire un fichier dbconfig.php sur la bse de dbconfig.php.dist pour les identifiants MYSQL
 2. importez le fichier SQL dans la base de donnée.
